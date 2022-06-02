@@ -12,6 +12,7 @@ app.get('/', function (req, res) {
   res.send('Hello world')
 })
 
+//controllers
 const workoutController = require('./server/controllers/workouts_controller.js')
 app.use('/workouts', workoutController)
 
