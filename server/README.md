@@ -4,24 +4,26 @@
 
 # will also be included in frontent code
 
+<!--
 ╔════════╦════════════════════╦══════════════════════════════════════════╗
-║ METHOD ║ PATH ║ PURPOSE ║
+║ METHOD ║ PATH               ║ PURPOSE                                  ║
 ╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET ║ / ║ Home page ║
+║ GET    ║ /                  ║ Home page                                ║
 ╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET ║ /workouts ║ My Workouts index page ║
+║ GET    ║ /workouts          ║ My Workouts index page                   ║
 ╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ POST ║ /workouts ║ Create new workout plan ║
+║ POST   ║ /workouts          ║ Create new workout plan                  ║
 ╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET ║ /workouts/new ║ Form for creating new workout? ║
+║ GET    ║ /workouts/new      ║ Form for creating new workout?           ║
 ╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET ║ /workouts/:id ║ View details on workout ║
+║ GET    ║ /workouts/:id      ║ View details on workout                  ║
 ╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ PUT ║ /workouts/:id ║ Update details on workout ║
+║ PUT    ║ /workouts/:id      ║ Update details on workout                ║
 ╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET ║ /workouts/:id/edit ║ Edit form page of existing workout plans ║
+║ GET    ║ /workouts/:id/edit ║ Edit form page of existing workout plans ║
 ╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ DELETE ║ /workouts/:id ║ Delete a workout ║
+║ DELETE ║ /workouts/:id      ║ Delete a workout                         ║
 ╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET ║ \* ║ 404 Page (matches any undefined route) ║
+║ GET    ║ *                  ║ 404 Page (matches any undefined route)   ║
 ╚════════╩════════════════════╩══════════════════════════════════════════╝
+ -->
