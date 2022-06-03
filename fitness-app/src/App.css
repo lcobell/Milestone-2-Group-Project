@@ -1,3 +1,19 @@
 .App {
   text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)),
+    url("https://cdn.pixabay.com/photo/2015/01/09/11/22/fitness-594143_960_720.jpg");
+  background-size: cover;
+  height: 150vh;
+}
+
+.title {
+  font-size: 10vw;
+}
+
+label {
+  font-size: 2vw;
+}
+
+.button-container {
+  padding-top: 20px;
 }
