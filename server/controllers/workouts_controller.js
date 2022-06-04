@@ -5,11 +5,11 @@ const db = require('../models')
 router.get('/', (req, res) => {
   db.Workout.find()
     .then((workouts) => {
-      res.render('workouts/index', { workouts })
+      res.render('index', { workouts })
     })
     .catch((err) => {
       console.log('err', err)
-      res.render('error404')
+      res.render('index')
     })
 })
 
@@ -17,28 +17,28 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   db.Workout.create(req.body)
     .then(() => {
-      res.redirect('/workouts')
+      res.redirect('index')
     })
     .catch((err) => {
       console.log('err', err)
-      res.render('error404')
+      res.render('index')
     })
 })
 
 //NEW
 router.get('/new', (req, res) => {
-  res.render('workouts/new')
+  res.render('index')
 })
 
 //DETAILS
 router.get('/:id', (req, res) => {
   db.Workout.findById(req.params.id)
     .then((workout) => {
-      res.render('workouts/my-workouts', { workout })
+      res.render('index', { workout })
     })
     .catch((err) => {
       console.log('err', err)
-      res.render('error404')
+      res.render('index')
     })
 })
 
@@ -46,11 +46,11 @@ router.get('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   db.Workout.findByIdAndUpdate(req.params.id, req.body)
     .then(() => {
-      res.redirect(`/workouts/${req.params.id}`)
+      res.redirect(index)
     })
     .catch((err) => {
       console.log('err', err)
-      res.render('error404')
+      res.render('index')
     })
 })
 
@@ -58,11 +58,11 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   db.Workout.findByIdAndDelete(req.params.id)
     .then((workout) => {
-      res.redirect('/workouts')
+      res.redirect('index')
     })
     .catch((err) => {
       console.log('err', err)
-      res.render('error404')
+      res.render('index')
     })
 })
 
@@ -70,10 +70,10 @@ router.delete('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   db.Workout.findById(req.params.id)
     .then((workout) => {
-      res.render('workouts/edit', { workout })
+      res.render('index', { workout })
     })
     .catch((err) => {
-      res.render('error404')
+      res.render('index')
     })
 })
 
