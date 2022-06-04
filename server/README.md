@@ -27,4 +27,4 @@
 | sets  | Number    |
 | lbs   | Number    |
 | rep   | Number    |
-| timer | Date      |
+| timer | Number    |
