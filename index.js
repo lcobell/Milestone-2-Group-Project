@@ -1,28 +1,32 @@
-// Require needed modules.
+// Modules and Globals
 require('dotenv').config()
 const express = require('express')
-
-const port = process.env.PORT || 3000
-
-// Initialize the app object.
+const methodOverride = require('method-override')
 const app = express()
 
-// Create a homepage route.
-app.get('/', function (req, res) {
-  res.send('Hello world')
-})
-
-//controllers
+//Controllers
 const workoutController = require('./server/controllers/workouts_controller.js')
 app.use('/workouts', workoutController)
 
-app.get('*', (req, res) => {
-  res.status(404).send('<h1>404 Page</h1>')
+// Express
+app.set('view engine', 'jsx')
+app.engine('jsx', require('express-react-views').createEngine())
+app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
+
+// Routes
+app.get('/', function (req, res) {
+  res.render('login')
 })
 
-// Listen for connections.
-app.listen(port, () => console.log(`Listening on port ${port}`))
+app.get('*', (req, res) => {
+  res.render('error404')
+})
 
+// Listen for Connections
+app.listen(process.env.PORT)
+
+//REACT connectiong
 app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }) //Line 10
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' })
 })
