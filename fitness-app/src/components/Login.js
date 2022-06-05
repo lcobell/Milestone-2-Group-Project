@@ -35,6 +35,7 @@ function Login() {
     navigate("/Profile", { replace: true }); //new line that navigates to profile on submit
 
     var { uname, pword } = document.forms[0];
+    var { uname, pword } = document.forms[0];
 
     //Find login info
     const userData = loginData.find((user) => user.username === uname.value);
