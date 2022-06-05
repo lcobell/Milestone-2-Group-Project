@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Profile from "./Profile";
 
 function Login() {
   // Login react states
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate(); //useNavigate hook
 
   //Mock login info
   const loginData = [
@@ -26,6 +29,10 @@ function Login() {
   // submit form function, prevent reload
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    //redirect to Profile
+
+    navigate("/Profile", { replace: true }); //new line that navigates to profile on submit
 
     var { uname, pword } = document.forms[0];
 
@@ -64,6 +71,15 @@ function Login() {
       </form>
     </div>
   );
+  //   return (
+  //     <div className="App">
+  //       <div className="login-form">
+  //         <Routes>
+  //           <Route path="/Profile" element={<Profile />} />
+  //         </Routes>
+  //       </div>
+  //     </div>
+  //   );
 
   return (
     <div className="App">
