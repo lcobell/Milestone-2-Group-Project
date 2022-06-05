@@ -1,29 +1,30 @@
 # Milestone-2-Group-Project
 
+# This is a fitness app for creating and tracking workout routines
+
 # ROUTES (may change over time)
 
-# will also be included in frontent code
+| METHOD | PATH               | PURPOSE                                        |
+| ------ | ------------------ | ---------------------------------------------- |
+| GET    | /                  | Home Page                                      |
+| GET    | /workouts          | Workouts index page                            |
+| POST   | /workouts          | Create new workout                             |
+| GET    | /workouts/new      | Form for creating a new workout                |
+| GET    | /workouts/:id      | Details about a particular workout             |
+| PUT    | /workouts/:id      | Update a particular workout                    |
+| GET    | /workouts/:id/edit | Form page for editing an existing workout      |
+| DELETE | /workouts/:id      | Delete a particular workout                    |
+| GET    | \*                 | 404 page (matches any route not defined above) |
 
-<!--
-╔════════╦════════════════════╦══════════════════════════════════════════╗
-║ METHOD ║ PATH               ║ PURPOSE                                  ║
-╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET    ║ /                  ║ Home page                                ║
-╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET    ║ /workouts          ║ My Workouts index page                   ║
-╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ POST   ║ /workouts          ║ Create new workout plan                  ║
-╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET    ║ /workouts/new      ║ Form for creating new workout?           ║
-╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET    ║ /workouts/:id      ║ View details on workout                  ║
-╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ PUT    ║ /workouts/:id      ║ Update details on workout                ║
-╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET    ║ /workouts/:id/edit ║ Edit form page of existing workout plans ║
-╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ DELETE ║ /workouts/:id      ║ Delete a workout                         ║
-╠════════╬════════════════════╬══════════════════════════════════════════╣
-║ GET    ║ *                  ║ 404 Page (matches any undefined route)   ║
-╚════════╩════════════════════╩══════════════════════════════════════════╝
- -->
+## Database
+
+**workouts**
+
+| Field | Type      |
+| ----- | --------- |
+| \_id  | Object ID |
+| name  | String    |
+| sets  | Number    |
+| lbs   | Number    |
+| rep   | Number    |
+| timer | Number    |
