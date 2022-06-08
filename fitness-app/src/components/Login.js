@@ -1,50 +1,58 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import Profile from "./Profile";
 
 function Login() {
   // Login react states
-  const [errorMessages, setErrorMessages] = useState({})
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [errorMessages, setErrorMessages] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate(); //useNavigate hook
 
   //Mock login info
   const loginData = [
     {
-      username: 'fit-appUser1',
-      password: 'getfit1',
+      username: "fit-appUser1",
+      password: "getfit1",
     },
     // can add more users as objects here...
-  ]
+  ];
   const invalid = {
-    uname: 'not a valid username',
-    pword: 'not a valid password',
-  }
+    uname: "not a valid username",
+    pword: "not a valid password",
+  };
 
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
     name === errorMessages.name && (
       <div className="error">{errorMessages.message}</div>
-    )
+    );
   // submit form function, prevent reload
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    var { uname, pword } = document.forms[0]
+    //redirect to Profile
+
+    navigate("/Profile", { replace: true }); //new line that navigates to profile on submit
+
+    var { uname, pword } = document.forms[0];
+    var { uname, pword } = document.forms[0];
 
     //Find login info
-    const userData = loginData.find((user) => user.username === uname.value)
+    const userData = loginData.find((user) => user.username === uname.value);
 
     //comparison
     if (userData) {
       if (userData.password !== pword.value) {
         // incorrect password
-        setErrorMessages({ name: 'pword', message: invalid.pword })
+        setErrorMessages({ name: "pword", message: invalid.pword });
       } else {
-        setIsSubmitted(true)
+        setIsSubmitted(true);
       }
     } else {
       //user not found
-      setErrorMessages({ name: 'uname', message: invalid.uname })
+      setErrorMessages({ name: "uname", message: invalid.uname });
     }
-  }
+  };
 
   //JSX for Login
   const renderForm = (
@@ -53,17 +61,26 @@ function Login() {
         <div className="input-container">
           <label>Username</label>
           <input type="text" name="uname" required />
-          {renderErrorMessage('uname')}
+          {renderErrorMessage("uname")}
           <label>Password</label>
           <input type="text" name="pword" required />
-          {renderErrorMessage('pword')}
+          {renderErrorMessage("pword")}
         </div>
         <div className="button-container">
           <input type="submit" />
         </div>
       </form>
     </div>
-  )
+  );
+  //   return (
+  //     <div className="App">
+  //       <div className="login-form">
+  //         <Routes>
+  //           <Route path="/Profile" element={<Profile />} />
+  //         </Routes>
+  //       </div>
+  //     </div>
+  //   );
 
   return (
     <div className="App">
@@ -72,7 +89,7 @@ function Login() {
         {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
