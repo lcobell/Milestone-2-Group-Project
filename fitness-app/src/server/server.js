@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const app = express()
 const cors = require('cors')
+const app = express()
 require('dotenv').config()
 
 app.use(cors())
@@ -16,8 +16,8 @@ mongoose.connect(
   }
 )
 //require route
-app.use('/', require('./controllers/workouts_controller'))
+app.use('/', require('./controllers/workoutRoute'))
 
-app.listen(3000, function () {
-  console.log('express server is running on port 3000')
+app.listen(3001, function () {
+  console.log('express server is running on port 3001')
 })
