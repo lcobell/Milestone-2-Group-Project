@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./Button.js";
+import { Button } from "./Button.Js";
 import "./Navbar.css";
 
 function Navbar() {
@@ -25,7 +25,7 @@ function Navbar() {
       <nav className="navbar">
         <div className="navbar-container">
           <Link to="/" className="navbar-logo">
-            Gainz Tracker <i class="fa-brands fa-wolf-pack-battalion"></i>
+            Gainz Tracker <i className="fa-brands fa-wolf-pack-battalion"></i>
           </Link>
           <div className="menu-icon" onClick={handleclick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
@@ -55,7 +55,6 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          {button && <Button buttonStyle="btn--outline">SIGN UP</Button>}
         </div>
       </nav>
     </>
