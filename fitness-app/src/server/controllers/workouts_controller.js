@@ -1,39 +1,21 @@
-const router = require('express').Router()
-const db = require('../models/workouts')
+const express = require('express'),
+  router = require('express').Router()
+const Workout = require('../models/workouts')
 
-//HOME
-router.get('/', (req, res) => {
-  db.Workout.find()
+//
+router.route('/routine').post((req, res) => {
+  const title = req.body.title
+  const content = req.body.content
+  const newRoutine = new Workout({
+    title,
+    content,
+  })
+
+  newRoutine.save()
 })
 
-//CREATE
-router.post('/', (req, res) => {
-  db.Workout.create(req.body)
-})
-
-//NEW
-router.get('/new', (req, res) => {
-  db.Workout.find()
-})
-
-//DETAILS
-router.get('/:id', (req, res) => {
-  db.Workout.findById(req.params.id)
-})
-
-//UPDATE
-router.put('/:id', (req, res) => {
-  db.Workout.findByIdAndUpdate(req.params.id, req.body)
-})
-
-//DELETE
-router.delete('/:id', (req, res) => {
-  db.Workout.findByIdAndDelete(req.params.id)
-})
-
-//EDIT
-router.get('/:id/edit', (req, res) => {
-  db.Workout.findById(req.params.id)
+router.route('/profile').get((req, res) => {
+  Workout.find().then((foundWorkouts) => res.json(foundWorkouts))
 })
 
 module.exports = router

@@ -1,23 +1,23 @@
-// Modules and Globals
-require('dotenv').config()
 const express = require('express')
-const methodOverride = require('method-override')
+const mongoose = require('mongoose')
 const app = express()
+const cors = require('cors')
+require('dotenv').config()
 
-//Controllers
-const workoutController = require('./controllers/workouts_controller')
-app.use('/workouts', workoutController)
+app.use(cors())
+app.use(express.json())
 
-// Express
-app.set('view engine', 'jsx')
-app.engine('jsx', require('express-react-views').createEngine())
-app.use(express.urlencoded({ extended: true }))
-app.use(methodOverride('_method'))
+//connect to mongoose
+mongoose.connect(
+  process.env.MONGO_URI,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log('connected to mongo: ', process.env.MONGO_URI)
+  }
+)
+//require route
+app.use('/', require('./controllers/workouts_controller'))
 
-// Listen for Connections
-app.listen(process.env.PORT)
-
-//REACT connectiong
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' })
+app.listen(3000, function () {
+  console.log('express server is running on port 3000')
 })
