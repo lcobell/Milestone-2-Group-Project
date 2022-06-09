@@ -20,7 +20,7 @@ function Profile() {
 
   return (
     <div className="container">
-      <h1>Profile Page</h1>
+      <h1>Routines Page</h1>
       {workouts.map((workout) => (
         <div>
           <h1>{workout.title}</h1>

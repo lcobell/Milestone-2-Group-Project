@@ -2,9 +2,9 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Login from './components/Login'
 import Routine from './components/Routine'
 import Profile from './components/Profile'
+import Login from './components/Login 2'
 
 function App() {
   return (
