@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Navbar from "./Navbar";
 
 function Profile() {
   const [workouts, setWorkouts] = useState([
@@ -20,6 +21,7 @@ function Profile() {
 
   return (
     <div className="container">
+        <Navbar />
       <h1>Routines Page</h1>
       {workouts.map((workout) => (
         <div>

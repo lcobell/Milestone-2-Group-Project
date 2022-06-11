@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Navbar from "./Navbar";
 
 function Routine() {
     const [input, setInput] = useState({
@@ -28,6 +29,7 @@ function Routine() {
     }
 
     return <div className="container">
+        <Navbar />
         <h1>
             Create Routine
         </h1>

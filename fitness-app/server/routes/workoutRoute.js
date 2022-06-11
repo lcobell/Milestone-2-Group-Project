@@ -19,4 +19,8 @@ router.route("/profile").get((req, res) => {
         .then(foundWorkouts => res.json(foundWorkouts))
 })
 
+// EDIT ROUTE
+router.route('/profile').put((req, res) =>{
+    Workout.findOneAndUpdate()
+})
 module.exports = router;
