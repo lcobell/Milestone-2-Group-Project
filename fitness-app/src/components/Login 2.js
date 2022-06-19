@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import Profile from "./Profile";
+import {  useNavigate } from "react-router-dom";
+
 
 function Login() {
   // Login react states

@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Navbar from './Navbar'
 
-function Routine() {
+function Edit() {
   const [input, setInput] = useState({
     title: '',
     content: '',
@@ -36,10 +36,20 @@ function Routine() {
     axios.post('http://localhost:3001/routine', newRoutine)
   }
 
+  useEffect(() => {
+    axios.get('http://localhost:3001/profile')
+      .then((res) => {
+        console.log(res)
+        setInput(res.data)
+        if (res.ok) {
+          return res.json()
+        }
+      })
+  },[])
+
   return (
     <div className="container">
-      <Navbar />
-      <h1>Create Routine</h1>
+      <h1>Update Routine</h1>
       <form>
         <div className="form-group">
         <label htmlFor="name">Name</label>
@@ -101,10 +111,11 @@ function Routine() {
           />
         </div>
 
-        <button onClick={handleClick}>ADD ROUTINE</button>
+        <button onClick={handleClick}>UPDATE</button>
       </form>
     </div>
+      
   )
 }
 
-export default Routine
+export default Edit
