@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {  useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import videoBg from "../assets/home.mp4";
 
 function Login() {
   // Login react states
@@ -56,7 +56,7 @@ function Login() {
 
   //JSX for Login
   const renderForm = (
-    <div className="form">
+    <div className="form" style={{ color: "white" }}>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Username</label>
@@ -84,8 +84,27 @@ function Login() {
 
   return (
     <div className="App">
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          position: "absolute",
+          width: "100%",
+          left: "50%",
+          top: "50%",
+          height: "100%",
+          objectFit: "cover",
+          transform: "translate(-50%, -50%)",
+          zIndex: "-1",
+        }}
+      >
+        <source src={videoBg} type="video/mp4" />
+      </video>
       <div className="login-form">
-        <div className="title">Sign In</div>
+        <div className="title" style={{ color: "white" }}>
+          Sign In
+        </div>
         {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
       </div>
     </div>

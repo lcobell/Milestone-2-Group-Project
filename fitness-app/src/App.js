@@ -4,7 +4,7 @@ import "./App.css";
 import Routine from "./components/Routine";
 import Profile from "./components/Profile";
 import Login from "./components/Login 2";
-import Edit from "./components/Edit"
+import Edit from "./components/Edit";
 import Delete from "./components/Delete";
 
 function App() {
