@@ -4,25 +4,32 @@ import Navbar from './Navbar'
 import { Link } from 'react-router-dom'
 
 function Profile() {
-  const [workouts, setWorkouts] = useState([ ])
-  const [newWorkouts, setNewWorkouts] = useState([ ])
- 
+  const [workouts, setWorkouts] = useState([
+    {
+      title: "",
+      content: "",
+      sets: '',
+      lbs: '',
+      reps: '',
+      timer: '',
+    },
+  ]);
+
   useEffect(() => {
-    axios.get('http://localhost:3001/profile')
+    fetch("/profile")
       .then((res) => {
-        console.log(res)
-        setWorkouts(res.data)
         if (res.ok) {
-          return res.json()
+          return res.json();
         }
       })
-  },[])
+      .then((jsonRes) => setWorkouts(jsonRes))
+      .catch((err) => console.log(err));
+  }, [workouts]);
 
-  const setID = (_id) => {
-    console.log(_id)
+  function deleteWorkout(id) {
+    axios.delete('http://localhost:3001/delete/' + id);
   }
 
-  
   return (
     <div className="container">
       <Navbar />
@@ -36,16 +43,10 @@ function Profile() {
           <p>{workout.lbs}</p>
           <p>{workout.reps}</p>
           <p>{workout.timer}</p>
-          <input 
-            type="text" 
-            placeholder="New Workout..." 
-            onChange={(e) =>{setNewWorkouts(e.target.value)}} />
           <Link to= '/edit'>
-          <button onClick={()=> setID(workout._id)}>Edit</button>
+          <button >Edit</button>
           </Link>
-          <Link to='/delete'>
-          <button>Delete</button>
-          </Link>
+          <button onClick={() => deleteWorkout(workout._id)}>Delete</button>
         </div>
       )})}
     </div>

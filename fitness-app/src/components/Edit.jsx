@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Navbar from './Navbar'
+import { Link } from 'react-router-dom'
 
 function Edit() {
-  const [input, setInput] = useState({
+  const [isPut, setIsPut] = useState(false)
+  const [newWorkout, setNewWorkout] = useState({
     title: '',
     content: '',
     sets: '',
@@ -12,10 +14,16 @@ function Edit() {
     timer: '',
   })
 
-  function handleChange(e) {
-    const { name, value } = e.target
+    
+  
+  function updateWorkout(id) {
+    axios.put('http://localhost:3001/edit/' + id, newWorkout)
+  }
 
-    setInput((prevInput) => {
+  
+  function handleUpdate(e) {
+    const { name, value } = e.target
+    setNewWorkout((prevInput) => {
       return {
         ...prevInput,
         [name]: value,
@@ -23,30 +31,7 @@ function Edit() {
     })
   }
 
-  function handleClick(e) {
-    e.preventDefault()
-    const newRoutine = {
-      title: input.title,
-      content: input.content,
-      sets: input.sets,
-      lbs: input.lbs,
-      reps: input.reps,
-      timer: input.timer,
-    }
-    axios.post('http://localhost:3001/routine', newRoutine)
-  }
-
-  useEffect(() => {
-    axios.get('http://localhost:3001/profile')
-      .then((res) => {
-        console.log(res)
-        setInput(res.data)
-        if (res.ok) {
-          return res.json()
-        }
-      })
-  },[])
-
+  
   return (
     <div className="container">
       <h1>Update Routine</h1>
@@ -54,9 +39,9 @@ function Edit() {
         <div className="form-group">
         <label htmlFor="name">Name</label>
           <input
-            onChange={handleChange}
+            onChange={handleUpdate}
             name="title"
-            value={input.title}
+            value={newWorkout.title}
             className="form-control"
           ></input>
         </div>
@@ -64,9 +49,9 @@ function Edit() {
         <div className="form-group">
         <label htmlFor="Description">Description</label>
           <textarea
-            onChange={handleChange}
+            onChange={handleUpdate}
             name="content"
-            value={input.content}
+            value={newWorkout.content}
             className="form-control"
           ></textarea>
         </div>
@@ -74,9 +59,9 @@ function Edit() {
           <label htmlFor="sets">Sets</label>
           <input
             type="number"
-            onChange={handleChange}
+            onChange={handleUpdate}
             name="sets"
-            value={input.sets}
+            value={newWorkout.sets}
             className="form-control"
           />
         </div>
@@ -84,9 +69,9 @@ function Edit() {
           <label htmlFor="lbs">Weight</label>
           <input
             type="number"
-            onChange={handleChange}
+            onChange={handleUpdate}
             name="lbs"
-            value={input.lbs}
+            value={newWorkout.lbs}
             className="form-control"
           />
         </div>
@@ -94,9 +79,9 @@ function Edit() {
           <label htmlFor="reps">Reps</label>
           <input
             type="number"
-            onChange={handleChange}
+            onChange={handleUpdate}
             name="reps"
-            value={input.reps}
+            value={newWorkout.reps}
             className="form-control"
           />
         </div>
@@ -104,14 +89,15 @@ function Edit() {
           <label htmlFor="timer">Time</label>
           <input
             type="number"
-            onChange={handleChange}
+            onChange={handleUpdate}
             name="timer"
-            value={input.timer}
+            value={newWorkout.timer}
             className="form-control"
           />
         </div>
-
-        <button onClick={handleClick}>UPDATE</button>
+        <Link to= '/profile'>
+        <button onClick={() => updateWorkout(newWorkout._id)}>UPDATE</button>
+        </Link>
       </form>
     </div>
       
