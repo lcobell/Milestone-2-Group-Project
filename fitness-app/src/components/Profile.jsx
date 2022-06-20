@@ -43,9 +43,9 @@ function Profile() {
             <p>{workout.lbs}</p>
             <p>{workout.reps}</p>
             <p>{workout.timer}</p>
-            <Link to="/edit">
+            {/* <Link to="/edit">
               <button>Edit</button>
-            </Link>
+            </Link> */}
             <button onClick={() => deleteWorkout(workout._id)}>Delete</button>
           </div>
         );
