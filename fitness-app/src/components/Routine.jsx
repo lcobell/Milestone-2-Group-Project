@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 
 function Routine() {
   const [input, setInput] = useState({
@@ -102,6 +103,10 @@ function Routine() {
         </div>
 
         <button onClick={handleClick}>ADD ROUTINE</button>
+
+        <Link to="/profile" className="linkToRoutines">
+          Return to your logged Routines
+        </Link>
       </form>
     </div>
   );
